@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>The App</title>
+</head>
+<body>
+    <%- include("nav.ejs") %>
+    <% if (locals.user_name) { %>
+        <div class="container">
+            <h4>
+               Message: <p><%= user_message %></p><hr>
+            </h4>
+            <h4>
+                Email:<p><%= user_email %></p><hr>
+            </h4>
+            <h4>
+                Posted by: <p><%= user_name %></p>
+            </h4>
+        </div>
+        
+        <% } else { %>
+            <h2>What you have to say 😊</h2>
+
+            <form action="/submit" method="post">
+                <ul>
+                    <li>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="user_name" />
+                    </li>
+                    <li>
+                        <label for="mail">Email:</label>
+                        <input type="email" id="mail" name="user_email" />
+                    </li>
+                    <li>
+                        <label for="msg">Message:</label>
+                        <textarea id="msg" name="user_message"></textarea>
+            
+                    </li>
+                    <button class="button" type="submit" > Submit </button>
+                </ul>
+            </form>
+        <% } %>
+
+     
+  <%- include("footer.ejs") %>  
+</body>
+</html>
